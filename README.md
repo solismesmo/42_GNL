@@ -17,10 +17,10 @@ Succeeding get_next_line with Single Static Variable.
 Making it a function that can manage multiple file descriptors. For example, if file descriptors 3, 4, and 5 can be read, get_next_line should be able to be called once on 3, once on 4, then once on 3, then once on 5. without losing the reading thread of each descriptor.
 
 # II - A Few Rules
-Prototype: int get_next_line(int fd, char **line);
+Prototype: char *get_next_line(int fd);
 
 Parameters: File descriptor for reading and the value of what has been read.
 
-Return value: 1 for a line has been read, 0 for EOF has been reached and -1 for an error happened.
+Return value: read line (correct behavior) and NULL (there is nothing else to read, or an error occurred)
 
 External functs allowed: read, malloc and free.
