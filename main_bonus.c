@@ -6,7 +6,7 @@
 /*   By: livieira <livieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 03:36:50 by livieira          #+#    #+#             */
-/*   Updated: 2023/08/25 03:37:21 by livieira         ###   ########.fr       */
+/*   Updated: 2023/08/29 03:08:22 by livieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-int	main(int argc, char *argv)
+int    main(int argc, char **argv)
 {
 	int		fd;
 	int		fd2;
-	char	retrn;
+	char	*retrn;
 	char	input[100];
 	char	*keyword = "exit\n";
 
@@ -41,10 +41,9 @@ int	main(int argc, char *argv)
 		{
 			retrn = get_next_line(fd);
 			printf("%s", retrn);
+			free(retrn);
 			retrn = get_next_line(fd2);
 			printf("%s", retrn);
-
-			free(retrn);
 		}
 		else
 		{
@@ -52,6 +51,7 @@ int	main(int argc, char *argv)
 			break ;
 		}
 	}
+	free(retrn);
 	close(fd);
 	return (0);
 }
