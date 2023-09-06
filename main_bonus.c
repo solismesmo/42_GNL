@@ -6,24 +6,25 @@
 /*   By: livieira <livieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 03:36:50 by livieira          #+#    #+#             */
-/*   Updated: 2023/08/29 03:08:22 by livieira         ###   ########.fr       */
+/*   Updated: 2023/09/06 10:45:18 by livieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int    main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		fd;
 	int		fd2;
 	char	*retrn;
 	char	input[100];
-	char	*keyword = "exit\n";
+	char	*keyword;
 
+	keyword = "exit\n";
 	fd = open(argv[1], O_RDONLY);
 	fd2 = open(argv[2], O_RDONLY);
 	(void)argc;
@@ -39,11 +40,15 @@ int    main(int argc, char **argv)
 		}
 		if (retrn != NULL)
 		{
+			retrn = get_next_line(150);
+			printf("%s", retrn);
+			free(retrn);
 			retrn = get_next_line(fd);
 			printf("%s", retrn);
 			free(retrn);
 			retrn = get_next_line(fd2);
 			printf("%s", retrn);
+			free(retrn);
 		}
 		else
 		{
@@ -51,7 +56,7 @@ int    main(int argc, char **argv)
 			break ;
 		}
 	}
-	free(retrn);
 	close(fd);
+	close(fd2);
 	return (0);
 }
