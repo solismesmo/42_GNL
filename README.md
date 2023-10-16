@@ -17,7 +17,10 @@ Succeeding get_next_line with Single Static Variable.
 Making it a function that can manage multiple file descriptors. For example, if file descriptors 3, 4, and 5 can be read, get_next_line should be able to be called once on 3, once on 4, then once on 3, then once on 5. without losing the reading thread of each descriptor.
 
 # II - A Few Rules
-Prototype: char *get_next_line(int fd);
+
+| Prototype |
+|-----------|
+| char *get_next_line(int fd) |
 
 Parameters: File descriptor for reading and the value of what has been read.
 
